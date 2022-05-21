@@ -20,7 +20,7 @@ spec:
             claimName: postgres-pv-claim
       containers:
         - name: postgres
-          image: flask-vue-db:5
+          image: flask-vue-db:latest
           imagePullPolicy: Never
           ports:
             - containerPort: 5432
