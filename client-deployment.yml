@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vueapp-deployment
+  labels:
+    app: vueapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vueapp
+  template:
+    metadata:
+      labels:
+        app: vueapp
+    spec:
+      volumes:
+        - name: config-volume
+          configMap:
+            name: config-client
+      containers:
+        - name: vueapp
+          image: flask-vue-client:4
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/dist/config.js
+              subPath: config.js
