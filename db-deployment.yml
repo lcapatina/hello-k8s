@@ -14,9 +14,13 @@ spec:
       labels:
         app: postgres
     spec:
+      volumes:
+        - name: postgres-pv-storage
+          persistentVolumeClaim:
+            claimName: postgres-pv-claim
       containers:
         - name: postgres
-          image: flask-vue-db:1
+          image: flask-vue-db:5
           imagePullPolicy: Never
           ports:
             - containerPort: 5432
@@ -31,4 +35,7 @@ spec:
                 secretKeyRef:
                   name: postgres-secret-config
                   key: pg_password
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgres-pv-storage
 
