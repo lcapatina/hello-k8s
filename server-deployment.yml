@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: flaskapi
-          image: flask-vue-server:7
+          image: flask-vue-server:10
           imagePullPolicy: Never
           ports:
             - containerPort: 5000
