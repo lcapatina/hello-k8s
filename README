@@ -1,0 +1,5 @@
+# Vue - flask application using K8s
+
+Prerequisite:
+- Have docker and kubectl installed
+- Have a running local cluster: `minikube start --drivevr=none`
