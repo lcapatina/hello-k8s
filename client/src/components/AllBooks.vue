@@ -91,7 +91,7 @@ export default {
     getBooks() {
       const displayURL = this.appConfig.VUE_APP_ENV_BACKEND;
       console.log(displayURL);
-      const path = 'http://localhost:5000/books';
+      const path = 'api/books';
       axios.get(path)
         .then((res) => {
           for (let i = 0; i < res.data.books.length; i += 1) {
@@ -114,7 +114,7 @@ export default {
     onSubmit(event) {
       event.preventDefault();
       console.log(this.form);
-      const path = 'http://localhost:5000/book';
+      const path = 'api/book';
       const payload = this.form;
       axios.post(path, payload)
         .then((res) => {

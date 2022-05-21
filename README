@@ -3,3 +3,11 @@
 Prerequisite:
 - Have docker and kubectl installed
 - Have a running local cluster: `minikube start --drivevr=none`
+
+
+Notes:
+- To deploy on k8s according to the manifest file in yml: `kubectl apply -f <manifest_file>`. This can be done for creating deployments, services, configuration maps.
+- Important observation: in a deployment, if we point towards an image with the latest tag, k8s doesn't seem to detect if the image has changed. To be investigated later. The current solution is to increment the version.
+- To bring down the pods in a deployment, this can be achieved through a scaling to 0 replicas: `kubectl scale deployment <deployment-name> --replicas=0`
+- In order to redirect the necessary flow to the backend, try using ingress with 2 rules, forwarding `/` to the vue app and `/api` to the flask application.
+- When on WSL, in order to visualize the webpage in the browser, the DNS entry `<minikubeIP> <ingressDomain>` needs to be added on the Windows side

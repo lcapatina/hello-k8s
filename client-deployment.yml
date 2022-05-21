@@ -20,7 +20,7 @@ spec:
             name: config-client
       containers:
         - name: vueapp
-          image: flask-vue-client:4
+          image: flask-vue-client:6
           imagePullPolicy: Never
           ports:
             - containerPort: 8080
