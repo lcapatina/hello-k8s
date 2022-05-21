@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+import psycopg2
+import os
 
 DEBUG = True
 
@@ -30,6 +32,14 @@ BOOKS = [
         'read': True
     }
 ]
+
+host = os.environ.get("PG_HOST")
+database = "books"
+user = os.environ.get("PG_USER")
+password = os.environ.get("PG_PASSWORD")
+print(user)
+print(password)
+#conn = psycopg2.connect(host=host, database=database, user=user, password=password)
 
 @app.route(BASE_PATH + '/books', methods=['GET'])
 def all_books():
