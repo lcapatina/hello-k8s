@@ -4,6 +4,17 @@ Prerequisite:
 - Have docker and kubectl installed
 - Have a running local cluster: `minikube start --drivevr=none`
 
+Steps to launch the project:
+- Build the db part: `make build-db`
+- Build the server part: `make build-server`
+- Build the client part: `make build-client`
+- Create the config map and the secret: `make create-config`
+- Create persistent volume and volume claim to be used by postgres: `make create-volume-persistence`
+- create db, backend and frontend k8s services: `make create-service-all`
+- deployment all 3 components of the application: `make create-deployment-all`
+- create proxy which will split traffic between front and backend: `make create-ingress-proxy`
+- add in the hosts file a mapping between `minikube ip` and the domain `hello.books`. It seems that this step needs to be redone at each relaunch of minikube as the assigned ip changes.
+- access the app on : `http:hello.books/`
 
 Notes:
 - To deploy on k8s according to the manifest file in yml: `kubectl apply -f <manifest_file>`. This can be done for creating deployments, services, configuration maps.
